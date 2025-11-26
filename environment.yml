@@ -1,0 +1,17 @@
+name: audioenv
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy
+  - pip
+  - pip:
+      - sounddevice
+      - torch
+      - websockets
+      - PyAudioWPatch
+      - torch-vggish-yamnet 
+      - scipy
+      - torchaudio
+      - librosa

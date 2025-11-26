@@ -1,0 +1,15 @@
+{
+  "name": "audio-event-overlay",
+  "version": "1.0.0",
+  "description": "Electron overlay for Audio Event Detection",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "latest"
+  }
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Event Overlay</title>
+    <style>
+        body {
+            background-color: transparent; /* Transparent background */
+            color: #eee;
+            font-family: monospace;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Hide the top bar */
+        #top-bar {
+            display: none;
+        }
+
+        #stage {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .center-box {
+            width: 300px;
+            height: 300px;
+            border: 2px solid rgba(124,252,0,0.25);
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.35);
+            border-radius: 50%; /* Make the box circular to match the radar feel */
+            /* Allow dragging the window by clicking the box */
+            -webkit-app-region: drag;
+            /* Ensure interactive elements inside are clickable if needed */
+        }
+
+        #degree-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 2px solid rgba(124,252,0,0.1);
+            z-index: 0;
+            transition: background 0.1s;
+            /* Prevent dragging from the ring itself if it interferes, but usually fine */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="top-bar">Waiting for data...</div>
+
+    <div id="stage">
+        <div class="center-box">
+            <div id="degree-ring"></div>
+        </div>
+    </div>
+
+    <script>
+        const topBar = document.getElementById('top-bar');
+        const degreeRing = document.getElementById('degree-ring');
+
+        // Unique colors per event type (non-silence)
+        const EVENT_COLORS = {
+            gun:          'rgba(255, 69, 58, 0.85)',   // red-ish
+            footsteps:    'rgba(255, 220, 0, 0.85)',   // yellow
+            vehicle:      'rgba(0, 122, 255, 0.85)',   // blue
+            voices:       'rgba(50, 215, 75, 0.85)',   // green
+            'general noise': 'rgba(191, 90, 242, 0.85)' // purple
+        };
+
+        // SVG Icons (Simple paths)
+        const ICONS = {
+            gun: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 12v-2h2l2 2h5l-2-2h7v2h2v3h-2v2h-5l-2 2h-5v-2h-2v-3z"/></svg>`, // Placeholder gun
+            footsteps: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.7-2.7c-.7-.7-1.6-1.1-2.5-1.1-.3 0-.6.1-.9.2z"/></svg>`, // Placeholder footprint/walk
+            vehicle: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>`, // Car
+            voices: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>`, // Chat bubble
+            'general noise': `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>` // Speaker/Sound
+        };
+        
+        // Fallback icon
+        const DEFAULT_ICON = `<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>`;
+
+        const ws = new WebSocket('ws://127.0.0.1:8080');
+
+        ws.onopen = () => {
+            console.log("Connected to WebSocket.");
+        };
+
+        ws.onmessage = (event) => {
+            const rawData = event.data;
+
+            // 3. Reset ring (clear previous icons and gradients)
+            degreeRing.style.background = 'none';
+            degreeRing.style.backgroundImage = 'none';
+            degreeRing.innerHTML = ''; // Clear icons
+
+            try {
+                const data = JSON.parse(rawData);
+
+                let items = [];
+                if (Array.isArray(data)) {
+                    items = data.flat(Infinity);
+                } else if (typeof data === 'object' && data !== null) {
+                    items = [data];
+                }
+
+                const ringGradients = [];
+
+                items.forEach(item => {
+                    if (!item || typeof item !== 'object') return;
+
+                    const eventName = (item.event || '').toLowerCase();
+                    
+                    // ---------- Degree ring ----------
+                    if (
+                        item.degree !== undefined &&
+                        item.degree !== null &&
+                        eventName &&
+                        eventName !== 'silence'
+                    ) {
+                        const deg = parseFloat(item.degree);
+                        if (!isNaN(deg)) {
+                            const color = EVENT_COLORS[eventName] || 'rgba(124,252,0,0.8)';
+
+                            // 1. Add Gradient Wedge
+                            const startAngle = deg - 20;
+                            const gradient = `
+                                conic-gradient(
+                                    from ${startAngle}deg,
+                                    transparent 0deg,
+                                    ${color} 10deg,
+                                    ${color} 30deg,
+                                    transparent 40deg
+                                )
+                            `.replace(/\s+/g, ' '); 
+                            ringGradients.push(gradient);
+
+                            // 2. Add Icon
+                            const iconContainer = document.createElement('div');
+                            iconContainer.style.position = 'absolute';
+                            iconContainer.style.width = '24px';
+                            iconContainer.style.height = '24px';
+                            iconContainer.style.color = color; // Icon inherits this color
+                            
+                            // Position logic:
+                            // We want the icon at 'deg' degrees along the ring.
+                            // Radius of ring is 110px (width 220px / 2).
+                            // Let's place it slightly inside or on the ring.
+                            const radius = 95; // slightly inside
+                            const rad = (deg - 90) * (Math.PI / 180); // -90 because 0 is usually 3 o'clock in trig, but 12 o'clock in CSS rotation? 
+                            // Actually, let's assume 0 deg is North (12 o'clock).
+                            // Trig 0 is East (3 o'clock).
+                            // So to map North(0) to Trig(270/-90), we subtract 90.
+                            
+                            const x = radius * Math.cos(rad) + 110 - 12; // 110 is center, -12 is half icon width
+                            const y = radius * Math.sin(rad) + 110 - 12;
+
+                            iconContainer.style.left = `${x}px`;
+                            iconContainer.style.top = `${y}px`;
+                            // Rotate icon to match orientation? Or keep upright?
+                            // Let's keep upright for readability, maybe rotate if user wants.
+                            // For now, upright.
+                            
+                            iconContainer.innerHTML = ICONS[eventName] || DEFAULT_ICON;
+                            degreeRing.appendChild(iconContainer);
+                        }
+                    }
+                });
+
+                if (ringGradients.length > 0) {
+                    degreeRing.style.backgroundImage = ringGradients.join(',');
+                } else {
+                    degreeRing.style.backgroundImage = 'none';
+                }
+
+            } catch (e) {
+                console.error("JSON Parse error", e);
+            }
+        };
+
+        ws.onclose = () => {
+            console.log("Disconnected.");
+        };
+    </script>
+</body>
+</html>

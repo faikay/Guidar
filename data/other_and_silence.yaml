@@ -1,0 +1,1563 @@
+- id: /m/09x0r
+  name: Speech
+  custom_name: other
+- id: /m/0ytgt
+  name: Child speech, kid speaking
+  custom_name: other
+- id: /m/01h8n0
+  name: Conversation
+  custom_name: other
+- id: /m/02qldy
+  name: Narration, monologue
+  custom_name: other
+- id: /m/0261r1
+  name: Babbling
+  custom_name: other
+- id: /m/0brhx
+  name: Speech synthesizer
+  custom_name: other
+- id: /m/07p6fty
+  name: Shout
+  custom_name: other
+- id: /m/07q4ntr
+  name: Bellow
+  custom_name: other
+- id: /m/07rwj3x
+  name: Whoop
+  custom_name: other
+- id: /m/07sr1lc
+  name: Yell
+  custom_name: other
+- id: /t/dd00135
+  name: Children shouting
+  custom_name: other
+- id: /m/03qc9zr
+  name: Screaming
+  custom_name: other
+- id: /m/02rtxlg
+  name: Whispering
+  custom_name: other
+- id: /m/01j3sz
+  name: Laughter
+  custom_name: other
+- id: /t/dd00001
+  name: Baby laughter
+  custom_name: other
+- id: /m/07r660_
+  name: Giggle
+  custom_name: other
+- id: /m/07s04w4
+  name: Snicker
+  custom_name: other
+- id: /m/07sq110
+  name: Belly laugh
+  custom_name: other
+- id: /m/07rgt08
+  name: Chuckle, chortle
+  custom_name: other
+- id: /m/0463cq4
+  name: Crying, sobbing
+  custom_name: other
+- id: /t/dd00002
+  name: Baby cry, infant cry
+  custom_name: other
+- id: /m/07qz6j3
+  name: Whimper
+  custom_name: other
+- id: /m/07qw_06
+  name: Wail, moan
+  custom_name: other
+- id: /m/07plz5l
+  name: Sigh
+  custom_name: other
+- id: /m/015lz1
+  name: Singing
+  custom_name: other
+- id: /m/0l14jd
+  name: Choir
+  custom_name: other
+- id: /m/01swy6
+  name: Yodeling
+  custom_name: other
+- id: /m/02bk07
+  name: Chant
+  custom_name: other
+- id: /m/01c194
+  name: Mantra
+  custom_name: other
+- id: /t/dd00005
+  name: Child singing
+  custom_name: other
+- id: /t/dd00006
+  name: Synthetic singing
+  custom_name: other
+- id: /m/06bxc
+  name: Rapping
+  custom_name: other
+- id: /m/02fxyj
+  name: Humming
+  custom_name: other
+- id: /m/07s2xch
+  name: Groan
+  custom_name: other
+- id: /m/07r4k75
+  name: Grunt
+  custom_name: other
+- id: /m/01w250
+  name: Whistling
+  custom_name: other
+- id: /m/0lyf6
+  name: Breathing
+  custom_name: other
+- id: /m/07mzm6
+  name: Wheeze
+  custom_name: other
+- id: /m/01d3sd
+  name: Snoring
+  custom_name: other
+- id: /m/07s0dtb
+  name: Gasp
+  custom_name: other
+- id: /m/07pyy8b
+  name: Pant
+  custom_name: other
+- id: /m/07q0yl5
+  name: Snort
+  custom_name: other
+- id: /m/01b_21
+  name: Cough
+  custom_name: other
+- id: /m/0dl9sf8
+  name: Throat clearing
+  custom_name: other
+- id: /m/01hsr_
+  name: Sneeze
+  custom_name: other
+- id: /m/07ppn3j
+  name: Sniff
+  custom_name: other
+- id: /m/06h7j
+  name: Run
+  custom_name: other
+- id: /m/07qv_x_
+  name: Shuffle
+  custom_name: other
+- id: /m/07pbtc8
+  name: Walk, footsteps
+  custom_name: other
+- id: /m/03cczk
+  name: Chewing, mastication
+  custom_name: other
+- id: /m/07pdhp0
+  name: Biting
+  custom_name: other
+- id: /m/0939n_
+  name: Gargling
+  custom_name: other
+- id: /m/01g90h
+  name: Stomach rumble
+  custom_name: other
+- id: /m/03q5_w
+  name: Burping, eructation
+  custom_name: other
+- id: /m/02p3nc
+  name: Hiccup
+  custom_name: other
+- id: /m/02_nn
+  name: Fart
+  custom_name: other
+- id: /m/0k65p
+  name: Hands
+  custom_name: other
+- id: /m/025_jnm
+  name: Finger snapping
+  custom_name: other
+- id: /m/0l15bq
+  name: Clapping
+  custom_name: other
+- id: /m/01jg02
+  name: Heart sounds, heartbeat
+  custom_name: other
+- id: /m/01jg1z
+  name: Heart murmur
+  custom_name: other
+- id: /m/053hz1
+  name: Cheering
+  custom_name: other
+- id: /m/028ght
+  name: Applause
+  custom_name: other
+- id: /m/07rkbfh
+  name: Chatter
+  custom_name: other
+- id: /m/03qtwd
+  name: Crowd
+  custom_name: other
+- id: /m/07qfr4h
+  name: Hubbub, speech noise, speech babble
+  custom_name: other
+- id: /t/dd00013
+  name: Children playing
+  custom_name: other
+- id: /m/0jbk
+  name: Animal
+  custom_name: other
+- id: /m/068hy
+  name: Domestic animals, pets
+  custom_name: other
+- id: /m/0bt9lr
+  name: Dog
+  custom_name: other
+- id: /m/05tny_
+  name: Bark
+  custom_name: other
+- id: /m/07r_k2n
+  name: Yip
+  custom_name: other
+- id: /m/07qf0zm
+  name: Howl
+  custom_name: other
+- id: /m/07rc7d9
+  name: Bow-wow
+  custom_name: other
+- id: /m/0ghcn6
+  name: Growling
+  custom_name: other
+- id: /t/dd00136
+  name: Whimper (dog)
+  custom_name: other
+- id: /m/01yrx
+  name: Cat
+  custom_name: other
+- id: /m/02yds9
+  name: Purr
+  custom_name: other
+- id: /m/07qrkrw
+  name: Meow
+  custom_name: other
+- id: /m/07rjwbb
+  name: Hiss
+  custom_name: other
+- id: /m/07r81j2
+  name: Caterwaul
+  custom_name: other
+- id: /m/0ch8v
+  name: Livestock, farm animals, working animals
+  custom_name: other
+- id: /m/03k3r
+  name: Horse
+  custom_name: other
+- id: /m/07rv9rh
+  name: Clip-clop
+  custom_name: other
+- id: /m/07q5rw0
+  name: Neigh, whinny
+  custom_name: other
+- id: /m/01xq0k1
+  name: Cattle, bovinae
+  custom_name: other
+- id: /m/07rpkh9
+  name: Moo
+  custom_name: other
+- id: /m/0239kh
+  name: Cowbell
+  custom_name: other
+- id: /m/068zj
+  name: Pig
+  custom_name: other
+- id: /t/dd00018
+  name: Oink
+  custom_name: other
+- id: /m/03fwl
+  name: Goat
+  custom_name: other
+- id: /m/07q0h5t
+  name: Bleat
+  custom_name: other
+- id: /m/07bgp
+  name: Sheep
+  custom_name: other
+- id: /m/025rv6n
+  name: Fowl
+  custom_name: other
+- id: /m/09b5t
+  name: Chicken, rooster
+  custom_name: other
+- id: /m/07st89h
+  name: Cluck
+  custom_name: other
+- id: /m/07qn5dc
+  name: Crowing, cock-a-doodle-doo
+  custom_name: other
+- id: /m/01rd7k
+  name: Turkey
+  custom_name: other
+- id: /m/07svc2k
+  name: Gobble
+  custom_name: other
+- id: /m/09ddx
+  name: Duck
+  custom_name: other
+- id: /m/07qdb04
+  name: Quack
+  custom_name: other
+- id: /m/0dbvp
+  name: Goose
+  custom_name: other
+- id: /m/07qwf61
+  name: Honk
+  custom_name: other
+- id: /m/01280g
+  name: Wild animals
+  custom_name: other
+- id: /m/0cdnk
+  name: Roaring cats (lions, tigers)
+  custom_name: other
+- id: /m/04cvmfc
+  name: Roar
+  custom_name: other
+- id: /m/015p6
+  name: Bird
+  custom_name: other
+- id: /m/020bb7
+  name: Bird vocalization, bird call, bird song
+  custom_name: other
+- id: /m/07pggtn
+  name: Chirp, tweet
+  custom_name: other
+- id: /m/07sx8x_
+  name: Squawk
+  custom_name: other
+- id: /m/0h0rv
+  name: Pigeon, dove
+  custom_name: other
+- id: /m/07r_25d
+  name: Coo
+  custom_name: other
+- id: /m/04s8yn
+  name: Crow
+  custom_name: other
+- id: /m/07r5c2p
+  name: Caw
+  custom_name: other
+- id: /m/09d5_
+  name: Owl
+  custom_name: other
+- id: /m/07r_80w
+  name: Hoot
+  custom_name: other
+- id: /m/05_wcq
+  name: Bird flight, flapping wings
+  custom_name: other
+- id: /m/01z5f
+  name: Canidae, dogs, wolves
+  custom_name: other
+- id: /m/06hps
+  name: Rodents, rats, mice
+  custom_name: other
+- id: /m/04rmv
+  name: Mouse
+  custom_name: other
+- id: /m/07r4gkf
+  name: Patter
+  custom_name: other
+- id: /m/03vt0
+  name: Insect
+  custom_name: other
+- id: /m/09xqv
+  name: Cricket
+  custom_name: other
+- id: /m/09f96
+  name: Mosquito
+  custom_name: other
+- id: /m/0h2mp
+  name: Fly, housefly
+  custom_name: other
+- id: /m/07pjwq1
+  name: Buzz
+  custom_name: other
+- id: /m/01h3n
+  name: Bee, wasp, etc.
+  custom_name: other
+- id: /m/09ld4
+  name: Frog
+  custom_name: other
+- id: /m/07st88b
+  name: Croak
+  custom_name: other
+- id: /m/078jl
+  name: Snake
+  custom_name: other
+- id: /m/07qn4z3
+  name: Rattle
+  custom_name: other
+- id: /m/032n05
+  name: Whale vocalization
+  custom_name: other
+- id: /m/04rlf
+  name: Music
+  custom_name: other
+- id: /m/04szw
+  name: Musical instrument
+  custom_name: other
+- id: /m/0fx80y
+  name: Plucked string instrument
+  custom_name: other
+- id: /m/0342h
+  name: Guitar
+  custom_name: other
+- id: /m/02sgy
+  name: Electric guitar
+  custom_name: other
+- id: /m/018vs
+  name: Bass guitar
+  custom_name: other
+- id: /m/042v_gx
+  name: Acoustic guitar
+  custom_name: other
+- id: /m/06w87
+  name: Steel guitar, slide guitar
+  custom_name: other
+- id: /m/01glhc
+  name: Tapping (guitar technique)
+  custom_name: other
+- id: /m/07s0s5r
+  name: Strum
+  custom_name: other
+- id: /m/018j2
+  name: Banjo
+  custom_name: other
+- id: /m/0jtg0
+  name: Sitar
+  custom_name: other
+- id: /m/04rzd
+  name: Mandolin
+  custom_name: other
+- id: /m/01bns_
+  name: Zither
+  custom_name: other
+- id: /m/07xzm
+  name: Ukulele
+  custom_name: other
+- id: /m/05148p4
+  name: Keyboard (musical)
+  custom_name: other
+- id: /m/05r5c
+  name: Piano
+  custom_name: other
+- id: /m/01s0ps
+  name: Electric piano
+  custom_name: other
+- id: /m/013y1f
+  name: Organ
+  custom_name: other
+- id: /m/03xq_f
+  name: Electronic organ
+  custom_name: other
+- id: /m/03gvt
+  name: Hammond organ
+  custom_name: other
+- id: /m/0l14qv
+  name: Synthesizer
+  custom_name: other
+- id: /m/01v1d8
+  name: Sampler
+  custom_name: other
+- id: /m/03q5t
+  name: Harpsichord
+  custom_name: other
+- id: /m/0l14md
+  name: Percussion
+  custom_name: other
+- id: /m/02hnl
+  name: Drum kit
+  custom_name: other
+- id: /m/0cfdd
+  name: Drum machine
+  custom_name: other
+- id: /m/026t6
+  name: Drum
+  custom_name: other
+- id: /m/06rvn
+  name: Snare drum
+  custom_name: other
+- id: /m/03t3fj
+  name: Rimshot
+  custom_name: other
+- id: /m/02k_mr
+  name: Drum roll
+  custom_name: other
+- id: /m/0bm02
+  name: Bass drum
+  custom_name: other
+- id: /m/011k_j
+  name: Timpani
+  custom_name: other
+- id: /m/01p970
+  name: Tabla
+  custom_name: other
+- id: /m/01qbl
+  name: Cymbal
+  custom_name: other
+- id: /m/03qtq
+  name: Hi-hat
+  custom_name: other
+- id: /m/01sm1g
+  name: Wood block
+  custom_name: other
+- id: /m/07brj
+  name: Tambourine
+  custom_name: other
+- id: /m/05r5wn
+  name: Rattle (instrument)
+  custom_name: other
+- id: /m/0xzly
+  name: Maraca
+  custom_name: other
+- id: /m/0mbct
+  name: Gong
+  custom_name: other
+- id: /m/016622
+  name: Tubular bells
+  custom_name: other
+- id: /m/0j45pbj
+  name: Mallet percussion
+  custom_name: other
+- id: /m/0dwsp
+  name: Marimba, xylophone
+  custom_name: other
+- id: /m/0dwtp
+  name: Glockenspiel
+  custom_name: other
+- id: /m/0dwt5
+  name: Vibraphone
+  custom_name: other
+- id: /m/0l156b
+  name: Steelpan
+  custom_name: other
+- id: /m/05pd6
+  name: Orchestra
+  custom_name: other
+- id: /m/01kcd
+  name: Brass instrument
+  custom_name: other
+- id: /m/0319l
+  name: French horn
+  custom_name: other
+- id: /m/07gql
+  name: Trumpet
+  custom_name: other
+- id: /m/07c6l
+  name: Trombone
+  custom_name: other
+- id: /m/0l14_3
+  name: Bowed string instrument
+  custom_name: other
+- id: /m/02qmj0d
+  name: String section
+  custom_name: other
+- id: /m/07y_7
+  name: Violin, fiddle
+  custom_name: other
+- id: /m/0d8_n
+  name: Pizzicato
+  custom_name: other
+- id: /m/01xqw
+  name: Cello
+  custom_name: other
+- id: /m/02fsn
+  name: Double bass
+  custom_name: other
+- id: /m/085jw
+  name: Wind instrument, woodwind instrument
+  custom_name: other
+- id: /m/0l14j_
+  name: Flute
+  custom_name: other
+- id: /m/06ncr
+  name: Saxophone
+  custom_name: other
+- id: /m/01wy6
+  name: Clarinet
+  custom_name: other
+- id: /m/03m5k
+  name: Harp
+  custom_name: other
+- id: /m/0395lw
+  name: Bell
+  custom_name: other
+- id: /m/03w41f
+  name: Church bell
+  custom_name: other
+- id: /m/027m70_
+  name: Jingle bell
+  custom_name: other
+- id: /m/0gy1t2s
+  name: Bicycle bell
+  custom_name: other
+- id: /m/07n_g
+  name: Tuning fork
+  custom_name: other
+- id: /m/0f8s22
+  name: Chime
+  custom_name: other
+- id: /m/026fgl
+  name: Wind chime
+  custom_name: other
+- id: /m/0150b9
+  name: Change ringing (campanology)
+  custom_name: other
+- id: /m/03qjg
+  name: Harmonica
+  custom_name: other
+- id: /m/0mkg
+  name: Accordion
+  custom_name: other
+- id: /m/0192l
+  name: Bagpipes
+  custom_name: other
+- id: /m/02bxd
+  name: Didgeridoo
+  custom_name: other
+- id: /m/0l14l2
+  name: Shofar
+  custom_name: other
+- id: /m/07kc_
+  name: Theremin
+  custom_name: other
+- id: /m/0l14t7
+  name: Singing bowl
+  custom_name: other
+- id: /m/01hgjl
+  name: Scratching (performance technique)
+  custom_name: other
+- id: /m/064t9
+  name: Pop music
+  custom_name: other
+- id: /m/0glt670
+  name: Hip hop music
+  custom_name: other
+- id: /m/02cz_7
+  name: Beatboxing
+  custom_name: other
+- id: /m/06by7
+  name: Rock music
+  custom_name: other
+- id: /m/03lty
+  name: Heavy metal
+  custom_name: other
+- id: /m/05r6t
+  name: Punk rock
+  custom_name: other
+- id: /m/0dls3
+  name: Grunge
+  custom_name: other
+- id: /m/0dl5d
+  name: Progressive rock
+  custom_name: other
+- id: /m/07sbbz2
+  name: Rock and roll
+  custom_name: other
+- id: /m/05w3f
+  name: Psychedelic rock
+  custom_name: other
+- id: /m/06j6l
+  name: Rhythm and blues
+  custom_name: other
+- id: /m/0gywn
+  name: Soul music
+  custom_name: other
+- id: /m/06cqb
+  name: Reggae
+  custom_name: other
+- id: /m/01lyv
+  name: Country
+  custom_name: other
+- id: /m/015y_n
+  name: Swing music
+  custom_name: other
+- id: /m/0gg8l
+  name: Bluegrass
+  custom_name: other
+- id: /m/02x8m
+  name: Funk
+  custom_name: other
+- id: /m/02w4v
+  name: Folk music
+  custom_name: other
+- id: /m/06j64v
+  name: Middle Eastern music
+  custom_name: other
+- id: /m/03_d0
+  name: Jazz
+  custom_name: other
+- id: /m/026z9
+  name: Disco
+  custom_name: other
+- id: /m/0ggq0m
+  name: Classical music
+  custom_name: other
+- id: /m/05lls
+  name: Opera
+  custom_name: other
+- id: /m/02lkt
+  name: Electronic music
+  custom_name: other
+- id: /m/03mb9
+  name: House music
+  custom_name: other
+- id: /m/07gxw
+  name: Techno
+  custom_name: other
+- id: /m/07s72n
+  name: Dubstep
+  custom_name: other
+- id: /m/0283d
+  name: Drum and bass
+  custom_name: other
+- id: /m/0m0jc
+  name: Electronica
+  custom_name: other
+- id: /m/08cyft
+  name: Electronic dance music
+  custom_name: other
+- id: /m/0fd3y
+  name: Ambient music
+  custom_name: other
+- id: /m/07lnk
+  name: Trance music
+  custom_name: other
+- id: /m/0g293
+  name: Music of Latin America
+  custom_name: other
+- id: /m/0ln16
+  name: Salsa music
+  custom_name: other
+- id: /m/0326g
+  name: Flamenco
+  custom_name: other
+- id: /m/0155w
+  name: Blues
+  custom_name: other
+- id: /m/05fw6t
+  name: Music for children
+  custom_name: other
+- id: /m/02v2lh
+  name: New-age music
+  custom_name: other
+- id: /m/0y4f8
+  name: Vocal music
+  custom_name: other
+- id: /m/0z9c
+  name: A capella
+  custom_name: other
+- id: /m/0164x2
+  name: Music of Africa
+  custom_name: other
+- id: /m/0145m
+  name: Afrobeat
+  custom_name: other
+- id: /m/02mscn
+  name: Christian music
+  custom_name: other
+- id: /m/016cjb
+  name: Gospel music
+  custom_name: other
+- id: /m/028sqc
+  name: Music of Asia
+  custom_name: other
+- id: /m/015vgc
+  name: Carnatic music
+  custom_name: other
+- id: /m/0dq0md
+  name: Music of Bollywood
+  custom_name: other
+- id: /m/06rqw
+  name: Ska
+  custom_name: other
+- id: /m/02p0sh1
+  name: Traditional music
+  custom_name: other
+- id: /m/05rwpb
+  name: Independent music
+  custom_name: other
+- id: /m/074ft
+  name: Song
+  custom_name: other
+- id: /m/025td0t
+  name: Background music
+  custom_name: other
+- id: /m/02cjck
+  name: Theme music
+  custom_name: other
+- id: /m/03r5q_
+  name: Jingle (music)
+  custom_name: other
+- id: /m/0l14gg
+  name: Soundtrack music
+  custom_name: other
+- id: /m/07pkxdp
+  name: Lullaby
+  custom_name: other
+- id: /m/01z7dr
+  name: Video game music
+  custom_name: other
+- id: /m/0140xf
+  name: Christmas music
+  custom_name: other
+- id: /m/0ggx5q
+  name: Dance music
+  custom_name: other
+- id: /m/04wptg
+  name: Wedding music
+  custom_name: other
+- id: /t/dd00031
+  name: Happy music
+  custom_name: other
+- id: /t/dd00033
+  name: Sad music
+  custom_name: other
+- id: /t/dd00034
+  name: Tender music
+  custom_name: other
+- id: /t/dd00035
+  name: Exciting music
+  custom_name: other
+- id: /t/dd00036
+  name: Angry music
+  custom_name: other
+- id: /t/dd00037
+  name: Scary music
+  custom_name: other
+- id: /m/03m9d0z
+  name: Wind
+  custom_name: other
+- id: /m/09t49
+  name: Rustling leaves
+  custom_name: other
+- id: /t/dd00092
+  name: Wind noise (microphone)
+  custom_name: other
+- id: /m/0jb2l
+  name: Thunderstorm
+  custom_name: other
+- id: /m/0ngt1
+  name: Thunder
+  custom_name: other
+- id: /m/0838f
+  name: Water
+  custom_name: other
+- id: /m/06mb1
+  name: Rain
+  custom_name: other
+- id: /m/07r10fb
+  name: Raindrop
+  custom_name: other
+- id: /t/dd00038
+  name: Rain on surface
+  custom_name: other
+- id: /m/0j6m2
+  name: Stream
+  custom_name: other
+- id: /m/0j2kx
+  name: Waterfall
+  custom_name: other
+- id: /m/05kq4
+  name: Ocean
+  custom_name: other
+- id: /m/034srq
+  name: Waves, surf
+  custom_name: other
+- id: /m/06wzb
+  name: Steam
+  custom_name: other
+- id: /m/07swgks
+  name: Gurgling
+  custom_name: other
+- id: /m/02_41
+  name: Fire
+  custom_name: other
+- id: /m/07pzfmf
+  name: Crackle
+  custom_name: other
+- id: /m/07yv9
+  name: Vehicle
+  custom_name: other
+- id: /m/019jd
+  name: Boat, Water vehicle
+  custom_name: other
+- id: /m/0hsrw
+  name: Sailboat, sailing ship
+  custom_name: other
+- id: /m/056ks2
+  name: Rowboat, canoe, kayak
+  custom_name: other
+- id: /m/02rlv9
+  name: Motorboat, speedboat
+  custom_name: other
+- id: /m/06q74
+  name: Ship
+  custom_name: other
+- id: /m/012f08
+  name: Motor vehicle (road)
+  custom_name: other
+- id: /m/0k4j
+  name: Car
+  custom_name: other
+- id: /m/0912c9
+  name: Vehicle horn, car horn, honking
+  custom_name: other
+- id: /m/07qv_d5
+  name: Toot
+  custom_name: other
+- id: /m/02mfyn
+  name: Car alarm
+  custom_name: other
+- id: /m/04gxbd
+  name: Power windows, electric windows
+  custom_name: other
+- id: /m/07rknqz
+  name: Skidding
+  custom_name: other
+- id: /m/0h9mv
+  name: Tire squeal
+  custom_name: other
+- id: /t/dd00134
+  name: Car passing by
+  custom_name: other
+- id: /m/0ltv
+  name: Race car, auto racing
+  custom_name: other
+- id: /m/07r04
+  name: Truck
+  custom_name: other
+- id: /m/0gvgw0
+  name: Air brake
+  custom_name: other
+- id: /m/05x_td
+  name: Air horn, truck horn
+  custom_name: other
+- id: /m/02rhddq
+  name: Reversing beeps
+  custom_name: other
+- id: /m/03cl9h
+  name: Ice cream truck, ice cream van
+  custom_name: other
+- id: /m/01bjv
+  name: Bus
+  custom_name: other
+- id: /m/03j1ly
+  name: Emergency vehicle
+  custom_name: other
+- id: /m/04qvtq
+  name: Police car (siren)
+  custom_name: other
+- id: /m/012n7d
+  name: Ambulance (siren)
+  custom_name: other
+- id: /m/012ndj
+  name: Fire engine, fire truck (siren)
+  custom_name: other
+- id: /m/04_sv
+  name: Motorcycle
+  custom_name: other
+- id: /m/0btp2
+  name: Traffic noise, roadway noise
+  custom_name: other
+- id: /m/06d_3
+  name: Rail transport
+  custom_name: other
+- id: /m/07jdr
+  name: Train
+  custom_name: other
+- id: /m/04zmvq
+  name: Train whistle
+  custom_name: other
+- id: /m/0284vy3
+  name: Train horn
+  custom_name: other
+- id: /m/01g50p
+  name: Railroad car, train wagon
+  custom_name: other
+- id: /t/dd00048
+  name: Train wheels squealing
+  custom_name: other
+- id: /m/0195fx
+  name: Subway, metro, underground
+  custom_name: other
+- id: /m/0k5j
+  name: Aircraft
+  custom_name: other
+- id: /m/014yck
+  name: Aircraft engine
+  custom_name: other
+- id: /m/04229
+  name: Jet engine
+  custom_name: other
+- id: /m/02l6bg
+  name: Propeller, airscrew
+  custom_name: other
+- id: /m/09ct_
+  name: Helicopter
+  custom_name: other
+- id: /m/0cmf2
+  name: Fixed-wing aircraft, airplane
+  custom_name: other
+- id: /m/0199g
+  name: Bicycle
+  custom_name: other
+- id: /m/06_fw
+  name: Skateboard
+  custom_name: other
+- id: /m/02mk9
+  name: Engine
+  custom_name: other
+- id: /t/dd00065
+  name: Light engine (high frequency)
+  custom_name: other
+- id: /m/08j51y
+  name: Dental drill, dentist's drill
+  custom_name: other
+- id: /m/01yg9g
+  name: Lawn mower
+  custom_name: other
+- id: /m/01j4z9
+  name: Chainsaw
+  custom_name: other
+- id: /t/dd00066
+  name: Medium engine (mid frequency)
+  custom_name: other
+- id: /t/dd00067
+  name: Heavy engine (low frequency)
+  custom_name: other
+- id: /m/01h82_
+  name: Engine knocking
+  custom_name: other
+- id: /t/dd00130
+  name: Engine starting
+  custom_name: other
+- id: /m/07pb8fc
+  name: Idling
+  custom_name: other
+- id: /m/07q2z82
+  name: Accelerating, revving, vroom
+  custom_name: other
+- id: /m/02dgv
+  name: Door
+  custom_name: other
+- id: /m/03wwcy
+  name: Doorbell
+  custom_name: other
+- id: /m/07r67yg
+  name: Ding-dong
+  custom_name: other
+- id: /m/02y_763
+  name: Sliding door
+  custom_name: other
+- id: /m/07rjzl8
+  name: Slam
+  custom_name: other
+- id: /m/07r4wb8
+  name: Knock
+  custom_name: other
+- id: /m/07qcpgn
+  name: Tap
+  custom_name: other
+- id: /m/07q6cd_
+  name: Squeak
+  custom_name: other
+- id: /m/0642b4
+  name: Cupboard open or close
+  custom_name: other
+- id: /m/0fqfqc
+  name: Drawer open or close
+  custom_name: other
+- id: /m/04brg2
+  name: Dishes, pots, and pans
+  custom_name: other
+- id: /m/023pjk
+  name: Cutlery, silverware
+  custom_name: other
+- id: /m/07pn_8q
+  name: Chopping (food)
+  custom_name: other
+- id: /m/0dxrf
+  name: Frying (food)
+  custom_name: other
+- id: /m/0fx9l
+  name: Microwave oven
+  custom_name: other
+- id: /m/02pjr4
+  name: Blender
+  custom_name: other
+- id: /m/02jz0l
+  name: Water tap, faucet
+  custom_name: other
+- id: /m/0130jx
+  name: Sink (filling or washing)
+  custom_name: other
+- id: /m/03dnzn
+  name: Bathtub (filling or washing)
+  custom_name: other
+- id: /m/03wvsk
+  name: Hair dryer
+  custom_name: other
+- id: /m/01jt3m
+  name: Toilet flush
+  custom_name: other
+- id: /m/012xff
+  name: Toothbrush
+  custom_name: other
+- id: /m/04fgwm
+  name: Electric toothbrush
+  custom_name: other
+- id: /m/0d31p
+  name: Vacuum cleaner
+  custom_name: other
+- id: /m/01s0vc
+  name: Zipper (clothing)
+  custom_name: other
+- id: /m/03v3yw
+  name: Keys jangling
+  custom_name: other
+- id: /m/0242l
+  name: Coin (dropping)
+  custom_name: other
+- id: /m/01lsmm
+  name: Scissors
+  custom_name: other
+- id: /m/02g901
+  name: Electric shaver, electric razor
+  custom_name: other
+- id: /m/05rj2
+  name: Shuffling cards
+  custom_name: other
+- id: /m/0316dw
+  name: Typing
+  custom_name: other
+- id: /m/0c2wf
+  name: Typewriter
+  custom_name: other
+- id: /m/01m2v
+  name: Computer keyboard
+  custom_name: other
+- id: /m/081rb
+  name: Writing
+  custom_name: other
+- id: /m/07pp_mv
+  name: Alarm
+  custom_name: other
+- id: /m/07cx4
+  name: Telephone
+  custom_name: other
+- id: /m/07pp8cl
+  name: Telephone bell ringing
+  custom_name: other
+- id: /m/01hnzm
+  name: Ringtone
+  custom_name: other
+- id: /m/02c8p
+  name: Telephone dialing, DTMF
+  custom_name: other
+- id: /m/015jpf
+  name: Dial tone
+  custom_name: other
+- id: /m/01z47d
+  name: Busy signal
+  custom_name: other
+- id: /m/046dlr
+  name: Alarm clock
+  custom_name: other
+- id: /m/03kmc9
+  name: Siren
+  custom_name: other
+- id: /m/0dgbq
+  name: Civil defense siren
+  custom_name: other
+- id: /m/030rvx
+  name: Buzzer
+  custom_name: other
+- id: /m/01y3hg
+  name: Smoke detector, smoke alarm
+  custom_name: other
+- id: /m/0c3f7m
+  name: Fire alarm
+  custom_name: other
+- id: /m/04fq5q
+  name: Foghorn
+  custom_name: other
+- id: /m/0l156k
+  name: Whistle
+  custom_name: other
+- id: /m/06hck5
+  name: Steam whistle
+  custom_name: other
+- id: /t/dd00077
+  name: Mechanisms
+  custom_name: other
+- id: /m/02bm9n
+  name: Ratchet, pawl
+  custom_name: other
+- id: /m/01x3z
+  name: Clock
+  custom_name: other
+- id: /m/07qjznt
+  name: Tick
+  custom_name: other
+- id: /m/07qjznl
+  name: Tick-tock
+  custom_name: other
+- id: /m/0l7xg
+  name: Gears
+  custom_name: other
+- id: /m/05zc1
+  name: Pulleys
+  custom_name: other
+- id: /m/0llzx
+  name: Sewing machine
+  custom_name: other
+- id: /m/02x984l
+  name: Mechanical fan
+  custom_name: other
+- id: /m/025wky1
+  name: Air conditioning
+  custom_name: other
+- id: /m/024dl
+  name: Cash register
+  custom_name: other
+- id: /m/01m4t
+  name: Printer
+  custom_name: other
+- id: /m/0dv5r
+  name: Camera
+  custom_name: other
+- id: /m/07bjf
+  name: Single-lens reflex camera
+  custom_name: other
+- id: /m/07k1x
+  name: Tools
+  custom_name: other
+- id: /m/03l9g
+  name: Hammer
+  custom_name: other
+- id: /m/03p19w
+  name: Jackhammer
+  custom_name: other
+- id: /m/01b82r
+  name: Sawing
+  custom_name: other
+- id: /m/02p01q
+  name: Filing (rasp)
+  custom_name: other
+- id: /m/023vsd
+  name: Sanding
+  custom_name: other
+- id: /m/0_ksk
+  name: Power tool
+  custom_name: other
+- id: /m/01d380
+  name: Drill
+  custom_name: other
+- id: /m/014zdl
+  name: Explosion
+  custom_name: other
+- id: /m/032s66
+  name: Gunshot, gunfire
+  custom_name: other
+- id: /m/04zjc
+  name: Machine gun
+  custom_name: other
+- id: /m/02z32qm
+  name: Fusillade
+  custom_name: other
+- id: /m/0_1c
+  name: Artillery fire
+  custom_name: other
+- id: /m/073cg4
+  name: Cap gun
+  custom_name: other
+- id: /m/0g6b5
+  name: Fireworks
+  custom_name: other
+- id: /g/122z_qxw
+  name: Firecracker
+  custom_name: other
+- id: /m/07qsvvw
+  name: Burst, pop
+  custom_name: other
+- id: /m/07pxg6y
+  name: Eruption
+  custom_name: other
+- id: /m/07qqyl4
+  name: Boom
+  custom_name: other
+- id: /m/083vt
+  name: Wood
+  custom_name: other
+- id: /m/07pczhz
+  name: Chop
+  custom_name: other
+- id: /m/07pl1bw
+  name: Splinter
+  custom_name: other
+- id: /m/07qs1cx
+  name: Crack
+  custom_name: other
+- id: /m/039jq
+  name: Glass
+  custom_name: other
+- id: /m/07q7njn
+  name: Chink, clink
+  custom_name: other
+- id: /m/07rn7sz
+  name: Shatter
+  custom_name: other
+- id: /m/04k94
+  name: Liquid
+  custom_name: other
+- id: /m/07rrlb6
+  name: Splash, splatter
+  custom_name: other
+- id: /m/07p6mqd
+  name: Slosh
+  custom_name: other
+- id: /m/07qlwh6
+  name: Squish
+  custom_name: other
+- id: /m/07r5v4s
+  name: Drip
+  custom_name: other
+- id: /m/07prgkl
+  name: Pour
+  custom_name: other
+- id: /m/07pqc89
+  name: Trickle, dribble
+  custom_name: other
+- id: /t/dd00088
+  name: Gush
+  custom_name: other
+- id: /m/07p7b8y
+  name: Fill (with liquid)
+  custom_name: other
+- id: /m/07qlf79
+  name: Spray
+  custom_name: other
+- id: /m/07ptzwd
+  name: Pump (liquid)
+  custom_name: other
+- id: /m/07ptfmf
+  name: Stir
+  custom_name: other
+- id: /m/0dv3j
+  name: Boiling
+  custom_name: other
+- id: /m/0790c
+  name: Sonar
+  custom_name: other
+- id: /m/0dl83
+  name: Arrow
+  custom_name: other
+- id: /m/07rqsjt
+  name: Whoosh, swoosh, swish
+  custom_name: other
+- id: /m/07qnq_y
+  name: Thump, thud
+  custom_name: other
+- id: /m/07rrh0c
+  name: Thunk
+  custom_name: other
+- id: /m/0b_fwt
+  name: Electronic tuner
+  custom_name: other
+- id: /m/02rr_
+  name: Effects unit
+  custom_name: other
+- id: /m/07m2kt
+  name: Chorus effect
+  custom_name: other
+- id: /m/018w8
+  name: Basketball bounce
+  custom_name: other
+- id: /m/07pws3f
+  name: Bang
+  custom_name: other
+- id: /m/07ryjzk
+  name: Slap, smack
+  custom_name: other
+- id: /m/07rdhzs
+  name: Whack, thwack
+  custom_name: other
+- id: /m/07pjjrj
+  name: Smash, crash
+  custom_name: other
+- id: /m/07pc8lb
+  name: Breaking
+  custom_name: other
+- id: /m/07pqn27
+  name: Bouncing
+  custom_name: other
+- id: /m/07rbp7_
+  name: Whip
+  custom_name: other
+- id: /m/07pyf11
+  name: Flap
+  custom_name: other
+- id: /m/07qb_dv
+  name: Scratch
+  custom_name: other
+- id: /m/07qv4k0
+  name: Scrape
+  custom_name: other
+- id: /m/07pdjhy
+  name: Rub
+  custom_name: other
+- id: /m/07s8j8t
+  name: Roll
+  custom_name: other
+- id: /m/07plct2
+  name: Crushing
+  custom_name: other
+- id: /t/dd00112
+  name: Crumpling, crinkling
+  custom_name: other
+- id: /m/07qcx4z
+  name: Tearing
+  custom_name: other
+- id: /m/02fs_r
+  name: Beep, bleep
+  custom_name: other
+- id: /m/07qwdck
+  name: Ping
+  custom_name: other
+- id: /m/07phxs1
+  name: Ding
+  custom_name: other
+- id: /m/07rv4dm
+  name: Clang
+  custom_name: other
+- id: /m/07s02z0
+  name: Squeal
+  custom_name: other
+- id: /m/07qh7jl
+  name: Creak
+  custom_name: other
+- id: /m/07qwyj0
+  name: Rustle
+  custom_name: other
+- id: /m/07s34ls
+  name: Whir
+  custom_name: other
+- id: /m/07qmpdm
+  name: Clatter
+  custom_name: other
+- id: /m/07p9k1k
+  name: Sizzle
+  custom_name: other
+- id: /m/07qc9xj
+  name: Clicking
+  custom_name: other
+- id: /m/07rwm0c
+  name: Clickety-clack
+  custom_name: other
+- id: /m/07phhsh
+  name: Rumble
+  custom_name: other
+- id: /m/07qyrcz
+  name: Plop
+  custom_name: other
+- id: /m/07qfgpx
+  name: Jingle, tinkle
+  custom_name: other
+- id: /m/07rcgpl
+  name: Hum
+  custom_name: other
+- id: /m/07p78v5
+  name: Zing
+  custom_name: other
+- id: /t/dd00121
+  name: Boing
+  custom_name: other
+- id: /m/07s12q4
+  name: Crunch
+  custom_name: other
+- id: /m/028v0c
+  name: Silence
+  custom_name: Silence
+- id: /m/01v_m0
+  name: Sine wave
+  custom_name: other
+- id: /m/0b9m1
+  name: Harmonic
+  custom_name: other
+- id: /m/0hdsk
+  name: Chirp tone
+  custom_name: other
+- id: /m/0c1dj
+  name: Sound effect
+  custom_name: other
+- id: /m/07pt_g0
+  name: Pulse
+  custom_name: other
+- id: /t/dd00125
+  name: Inside, small room
+  custom_name: other
+- id: /t/dd00126
+  name: Inside, large room or hall
+  custom_name: other
+- id: /t/dd00127
+  name: Inside, public space
+  custom_name: other
+- id: /t/dd00128
+  name: Outside, urban or manmade
+  custom_name: other
+- id: /t/dd00129
+  name: Outside, rural or natural
+  custom_name: other
+- id: /m/01b9nn
+  name: Reverberation
+  custom_name: other
+- id: /m/01jnbd
+  name: Echo
+  custom_name: other
+- id: /m/096m7z
+  name: Noise
+  custom_name: other
+- id: /m/06_y0by
+  name: Environmental noise
+  custom_name: other
+- id: /m/07rgkc5
+  name: Static
+  custom_name: other
+- id: /m/06xkwv
+  name: Mains hum
+  custom_name: other
+- id: /m/0g12c5
+  name: Distortion
+  custom_name: other
+- id: /m/08p9q4
+  name: Sidetone
+  custom_name: other
+- id: /m/07szfh9
+  name: Cacophony
+  custom_name: other
+- id: /m/0chx_
+  name: White noise
+  custom_name: other
+- id: /m/0cj0r
+  name: Pink noise
+  custom_name: other
+- id: /m/07p_0gm
+  name: Throbbing
+  custom_name: other
+- id: /m/01jwx6
+  name: Vibration
+  custom_name: other
+- id: /m/07c52
+  name: Television
+  custom_name: other
+- id: /m/06bz3
+  name: Radio
+  custom_name: other
+- id: /m/07hvw1
+  name: Field recording
+  custom_name: other
