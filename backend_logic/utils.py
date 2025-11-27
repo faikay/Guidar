@@ -13,6 +13,19 @@ def _to_numpy(x):
         return x.detach().cpu().numpy()
     return x
 
+def softmax_with_temp(vals, temp=1.0):
+    vals = np.array(vals, dtype=np.float64)
+    if temp == 0:
+        one_hot = np.zeros_like(vals)
+        one_hot[np.argmax(vals)] = 1.0
+        return one_hot
+    shifted = vals / temp
+    shifted -= shifted.max()                 # numerical stability
+    exps = np.exp(shifted)
+    s = exps.sum()
+    if s == 0:
+        return np.ones_like(vals) / len(vals)
+    return exps / s
 
 
 def get_indices_from_dict(element, lst):
