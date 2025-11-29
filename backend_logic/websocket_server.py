@@ -1,5 +1,5 @@
 import asyncio
-from backend_logic.utils import find_best_wasapi_loopback_device_pyaudio
+from backend_logic.utils import find_best_wasapi_loopback_device_pyaudio, peek_queue
 import websockets
 import json
 import os
@@ -14,12 +14,14 @@ CONNECTED_CLIENTS = set()
 # queue for events detected by the model; broadcasted to clients by a separate
 # task. This is created when the server starts.
 EVENT_QUEUE = None
+AUDIO_QUEUE = None
 
 
 with open(os.path.join(os.path.dirname(__file__), '..', "data" , 'config.json'), 'r') as f:
     config = json.load(f)
 
 SETUP = config.get("format", "cues")
+min_queue_size = 3 #config.get("min_queue_size", 3)
 skip_model = True if SETUP == "cues" else False
 
 async def handler(websocket):
@@ -38,42 +40,60 @@ async def handler(websocket):
         CONNECTED_CLIENTS.discard(websocket)
 
 async def start_websocket_server():
-    global EVENT_QUEUE
-    EVENT_QUEUE = asyncio.Queue(maxsize=25)
+    global EVENT_QUEUE, AUDIO_QUEUE
+    EVENT_QUEUE = asyncio.Queue(maxsize=15)
+    AUDIO_QUEUE = asyncio.Queue(maxsize=15)
+    queue_min_condition = asyncio.Condition()
 
+    
+    async def wait_for_audio_q_size(condition,audio_queue,n=3):
+        async with condition:
+            await condition.wait_for(lambda: audio_queue.qsize() >= n)
 
-    async def audio_producer(q: asyncio.Queue):
+    async def audio_producer(audio_q: asyncio.Queue):
         """Produce events from audio and put them on the queue."""
         device,channels = find_best_wasapi_loopback_device_pyaudio()
         generator = get_audio_stream_pyaudiowpatch(device=device)
         while True:
             try:
                 audio_chunk, sample_rate = await asyncio.to_thread(next, generator)
-                #print("[audio_producer] Got audio chunk")
+
+                async with queue_min_condition:
+                    await audio_q.put((audio_chunk, sample_rate,channels))
+                    queue_min_condition.notify_all()
+
+                    #print("[audio_producer] Got audio chunk")
             except StopIteration:
                 #print("[audio_producer] Audio generator no longer receiving data")
                 #break       it should not stop in normal operation, 
                 continue
             except Exception as e:
-                #print(f"[audio_producer] Audio capture error: {e}")
-                await q.put({"error": f"Audio capture error: {str(e)}"})
-                await asyncio.sleep(0.1)
+                async with queue_min_condition:
+                    await audio_q.put({"error": f"Audio capture error: {str(e)}"})
+                    queue_min_condition.notify_all()
+                    await asyncio.sleep(0.1)
                 continue
-
+    
+    async def event_producer(audio_q: asyncio.Queue, event_q: asyncio.Queue):
+        while True:
             try:
-                print(f"[audio_producer] Running inference on audio chunk")
+                await wait_for_audio_q_size(queue_min_condition,audio_q,min_queue_size)
+                
+                async with queue_min_condition:
+                    audio_chunks, sample_rates, channels_audios = peek_queue(audio_q,min_queue_size) # get min_queue_size items, remove only oldest 
+                    _ = await audio_q.get()
 
-                events = await asyncio.to_thread(predict_events, audio_chunk, sample_rate, channels, skip_model=skip_model)
+                events = await asyncio.to_thread(predict_events, audio_chunks, sample_rates, channels_audios, skip_model=skip_model)
                 print(f"[audio_producer] Inference complete, events: {events}")
             except Exception as e:
                 print(f"[audio_producer] Inference error: {e}")
                 traceback.print_exc()
-                await q.put({"error": f"Inference error: {str(e)}"})
+                await event_q.put({"error": f"Inference error: {str(e)}"})
                 continue
                
             
             #print(f"[audio_producer] Detected events: {q.qsize()}")
-            await q.put(events)
+            await event_q.put(events)
 
 
     async def event_broadcaster(q: asyncio.Queue):
@@ -111,7 +131,8 @@ async def start_websocket_server():
             await q.put({"error": f"event_broadcaster exception: {e}", "traceback": tb})
 
     # Start producer and broadcaster tasks while server runs
-    producer_task = asyncio.create_task(audio_producer(EVENT_QUEUE))
+    audio_producer_task = asyncio.create_task(audio_producer(AUDIO_QUEUE))
+    event_producer_task = asyncio.create_task(event_producer(AUDIO_QUEUE, EVENT_QUEUE))
     broadcaster_task = asyncio.create_task(event_broadcaster(EVENT_QUEUE))
 
     try:
@@ -119,5 +140,6 @@ async def start_websocket_server():
             print("WebSocket server started at ws://127.0.0.1:8080")
             await asyncio.Future()  # Run forever
     finally:
-        producer_task.cancel()
+        audio_producer_task.cancel()
         broadcaster_task.cancel()
+        event_producer_task.cancel()

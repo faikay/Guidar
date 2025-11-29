@@ -1,3 +1,4 @@
+import asyncio
 import json
 import os
 import pyaudiowpatch as pyaudio
@@ -226,3 +227,12 @@ def seven_one_quadrant_from_azimuth(az_deg):
         return "SL", 4
     # FL (330°): 300° -> 360°
     return "FL", 0
+
+
+def peek_queue(q: asyncio.Queue, n: int):
+    ret_list = [[] for i in range(len(q._queue[0]))] # init empty lists for each element in the tuple
+    for i in range(min(n, q.qsize())):
+        curr_item = q._queue[i]
+        for j in range(len(q._queue[i])):
+            ret_list[j].append(curr_item[j])
+    return ret_list

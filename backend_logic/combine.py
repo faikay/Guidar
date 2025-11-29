@@ -21,7 +21,7 @@ def combine_quadro(fl_events, fr_events, rl_events, rr_events, fl_channel, fr_ch
     if SETUP == "cues":
         return combine_quadro_azimuth(fl_events, fr_events, rl_events, rr_events, fl_channel, fr_channel, rl_channel, rr_channel)
     else:
-        return combine_quadro_weighted(fl_events, fr_events, rl_events, rr_events, fl_channel, fr_channel, rl_channel, rr_channel)
+        return combine_quadro_confidence_weighted_avg(fl_events, fr_events, rl_events, rr_events, fl_channel, fr_channel, rl_channel, rr_channel)
 
 def combine_7one(
         fl_events, fr_events, rl_events, rr_events, sl_events, sr_events,
@@ -167,11 +167,294 @@ def combine_quadro_logic(fl_events, fr_events, rl_events, rr_events, fl_channel,
 # ^^ initial try, following is more advanced logic: using azimuth 
 
 
+def combine_quadro_intensity(fl_events, fr_events, rl_events, rr_events, fl_channel, fr_channel, rl_channel, rr_channel):
+
+    idx_to_degree = {0: 330, 1: 30, 2: 240, 3: 120}  # FL, FR, RL, RR
+    
+    fl_channel = _to_numpy(fl_channel)
+    fr_channel = _to_numpy(fr_channel)
+    rl_channel = _to_numpy(rl_channel)
+    rr_channel = _to_numpy(rr_channel)
+    
+    # Get energies
+    FL = _energy(fl_channel)
+    FR = _energy(fr_channel)
+    RL = _energy(rl_channel)
+    RR = _energy(rr_channel)
+    
+    energies = [FL, FR, RL, RR]
+    total_energy = sum(energies) + 1e-8
+    
+    # If no energy at all, return empty
+    if total_energy < 1e-6:
+        return []
+    
+    # Compute intensity-weighted azimuth
+    y = (FR + FL) - (RL + RR)  # front vs back
+    x = (FR + RR) - (FL + RL)  # right vs left
+    
+    theta = np.arctan2(y, x)
+    theta_deg = np.degrees(theta)
+    
+    if theta_deg < 0:
+        theta_deg += 360.0
+    
+    theta_deg = (theta_deg + 90.0) % 360.0
+    
+    # Get events and their confidences
+    combined = [fl_events[0], fr_events[0], rl_events[0], rr_events[0]]
+    confidences = [e.get("confidence", 0.0) for e in combined]
+    
+    # Use highest confidence event
+    chosen_idx = int(np.argmax(confidences))
+    result = combined[chosen_idx].copy()
+    result["degree"] = float(theta_deg)
+    
+    return result
+
+
+def combine_quadro_confidence_weighted_avg(fl_events, fr_events, rl_events, rr_events, fl_channel, fr_channel, rl_channel, rr_channel):
+    """
+    Returns multiple events, each with their own confidence-weighted degree.
+    """
+    idx_to_degree = {0: 330, 1: 30, 2: 240, 3: 120}  # FL, FR, RL, RR
+    
+    # Get all events from each channel (each is a list)
+    all_channel_events = [fl_events, fr_events, rl_events, rr_events]
+    
+    # Collect all unique event types across all channels
+    unique_events = {}  # event_name -> list of (channel_idx, event_dict)
+    
+    for ch_idx, events in enumerate(all_channel_events):
+        for event in events:
+            event_name = event.get("event", "silence")
+            if event_name not in unique_events:
+                unique_events[event_name] = []
+            unique_events[event_name].append((ch_idx, event))
+    
+    results = []
+    
+    for event_name, occurrences in unique_events.items():
+        if event_name == "silence":
+            continue
+        
+        # Get confidence per channel for this event (0 if not present)
+        confidences = [0.0, 0.0, 0.0, 0.0]
+        best_event = None
+        best_conf = -1
+        
+        for ch_idx, event in occurrences:
+            conf = event.get("confidence", 0.0)
+            confidences[ch_idx] = conf
+            if conf > best_conf:
+                best_conf = conf
+                best_event = event
+        
+        total_conf = sum(confidences)
+        if total_conf < 0.01:
+            continue
+        
+        # Convert degrees to vectors for proper circular averaging
+        x_sum = 0.0
+        y_sum = 0.0
+        for i in range(4):
+            rad = np.radians(idx_to_degree[i])
+            x_sum += confidences[i] * np.cos(rad)
+            y_sum += confidences[i] * np.sin(rad)
+        
+        # Compute weighted average angle
+        weighted_deg = np.degrees(np.arctan2(y_sum, x_sum))
+        if weighted_deg < 0:
+            weighted_deg += 360.0
+        
+        result = best_event.copy()
+        result["degree"] = float(weighted_deg)
+        results.append(result)
+    
+    if not results:
+        return []
+    
+    # Sort by confidence descending
+    results.sort(key=lambda x: x.get("confidence", 0.0), reverse=True)
+    
+    return results
+
+
+def combine_quadro_confidence(fl_events, fr_events, rl_events, rr_events, fl_channel, fr_channel, rl_channel, rr_channel):
+    """
+    Confidence-based quadro combine. better for PRETRAINEDSED, instead of yamnet
+    """
+    idx_to_degree = {0: 330, 1: 30, 2: 240, 3: 120}  # FL, FR, RL, RR
+    
+    combined = [fl_events[0], fr_events[0], rl_events[0], rr_events[0]]
+    
+    # Get confidences for each channel
+    confidences = [e.get("confidence", 0.0) for e in combined]
+    FL_conf, FR_conf, RL_conf, RR_conf = confidences
+    
+    # Check if all confidences are too low (silence)
+    if max(confidences) < 0.01:
+        return []
+    
+    # Check if confidences are within margin (no dominant direction)
+    # But don't drop - use confidence-weighted azimuth
+    if within_margin(confidences, margin=0.15):
+        # All similar confidence - compute weighted average direction
+        total_conf = sum(confidences) + 1e-8
+        weighted_degree = sum(idx_to_degree[i] * confidences[i] for i in range(4)) / total_conf
+        weighted_degree = weighted_degree % 360.0
+        
+        # Use highest confidence event
+        chosen_idx = np.argmax(confidences)
+        result = combined[chosen_idx].copy()
+        result["degree"] = float(weighted_degree)
+        return result
+    
+    # Compute azimuth using confidence as pseudo-energy
+    # Same formula as energy-based but with confidence
+    y = (FR_conf + FL_conf) - (RL_conf + RR_conf)  # front vs back
+    x = (FR_conf + RR_conf) - (FL_conf + RL_conf)  # right vs left
+    
+    theta = np.arctan2(y, x)
+    theta_deg = np.degrees(theta)
+    
+    if theta_deg < 0:
+        theta_deg += 360.0
+    
+    theta_deg = (theta_deg + 90.0) % 360.0
+    
+    # Get the quadrant with highest confidence
+    _, quadrant_idx = quadro_quadrant_from_azimuth(theta_deg)
+    
+    result = combined[quadrant_idx].copy()
+    result["degree"] = float(theta_deg)
+    
+    return result
+
+
+def combine_quadro_weighted_confidence(fl_events, fr_events, rl_events, rr_events, fl_channel, fr_channel, rl_channel, rr_channel):
+
+    to_side_lr = {0: 0, 1: 1, 2: 0, 3: 1}  # 0=left, 1=right
+    to_side_fr = {0: 0, 1: 0, 2: 1, 3: 1}  # 0=front, 1=rear
+    
+    rel_idx = {0: {1: 60, 2: -90, 3: 150},
+               1: {0: -60, 2: -150, 3: 90},
+               2: {0: 90, 1: 150, 3: -120},
+               3: {0: -150, 1: -90, 2: 120}}
+    
+    idx_to_degree = {0: 330, 1: 30, 2: 240, 3: 120}  # FL, FR, RL, RR
+    visited = set()
+    final = []
+    combined = fl_events + fr_events + rl_events + rr_events
+    
+    # Get confidences for direction calculation
+    confidences = [combined[i].get("confidence", 0.0) for i in range(4)]
+    
+    for i in range(len(combined)):
+        if i not in visited:
+            curr = combined[i]["event"]
+            indices = get_indices_from_dict(curr, combined)
+            visited.update(indices)
+            
+            # Don't drop if all 4 are the same - use confidence to find direction
+            if len(indices) == 4:
+                # All channels have same event - use confidence-weighted direction
+                total_conf = sum(confidences) + 1e-8
+                if total_conf < 0.04:  # All silence
+                    return []
+                
+                # Weighted average degree
+                weighted_degree = sum(idx_to_degree[j] * confidences[j] for j in range(4)) / total_conf
+                weighted_degree = weighted_degree % 360.0
+                
+                # Use highest confidence event
+                chosen_idx = int(np.argmax(confidences))
+                result = combined[chosen_idx].copy()
+                result["degree"] = float(weighted_degree)
+                return result
+            
+            if len(indices) > 1:
+                # Find channel with highest confidence
+                max_conf = -1
+                chosen = None
+                for idx in indices:
+                    conf = confidences[idx]
+                    if conf > max_conf:
+                        max_conf = conf
+                        chosen = idx
+                
+                chosen_conf = confidences[chosen]
+                chosen_lr_side = to_side_lr[chosen]
+                chosen_fr_side = to_side_fr[chosen]
+                
+                if len(indices) == 2:
+                    other = [idx for idx in indices if idx != chosen][0]
+                    other_conf = confidences[other]
+                    total_conf = chosen_conf + other_conf + 1e-8
+                    chosen_norm = chosen_conf / total_conf
+                    other_norm = other_conf / total_conf
+                    
+                    if to_side_lr[other] == chosen_lr_side or to_side_fr[other] == chosen_fr_side:
+                        # Same side - interpolate degrees
+                        chosen_degree = idx_to_degree[chosen]
+                        other_degree = idx_to_degree[other]
+                        
+                        if chosen_fr_side == 0:  # front
+                            if other_degree < chosen_degree:
+                                other_degree += 360.0
+                            else:
+                                chosen_degree += 360.0
+                        
+                        weighted_degree = ((chosen_degree * chosen_norm + other_degree * other_norm)) % 360.0
+                        combined[chosen]["degree"] = float(weighted_degree)
+                        final.append([combined[chosen]])
+                    
+                    elif other_conf > chosen_conf * 0.70:
+                        # Opposite corners with similar confidence - use weighted average
+                        chosen_degree = idx_to_degree[chosen]
+                        other_degree = idx_to_degree[other]
+                        weighted_degree = ((chosen_degree * chosen_norm + other_degree * other_norm)) % 360.0
+                        combined[chosen]["degree"] = float(weighted_degree)
+                        final.append([combined[chosen]])
+                    else:
+                        # Opposite corner with low confidence other
+                        combined[chosen]["degree"] = float(idx_to_degree[chosen])
+                        final.append([combined[chosen]])
+                
+                if len(indices) == 3:
+                    front = 0
+                    back = 0
+                    left = 0
+                    right = 0
+                    for idx in indices:
+                        side_lr = to_side_lr[idx]
+                        side_fr = to_side_fr[idx]
+                        conf = confidences[idx]
+                        if side_fr == 0:
+                            front += conf
+                        else:
+                            back += conf
+                        if side_lr == 0:
+                            left += conf
+                        else:
+                            right += conf
+                    total_conf = front + back + left + right + 1e-8
+                    front = front / total_conf
+                    back = back / total_conf
+                    left = left / total_conf
+                    right = right / total_conf
+                    degree = azimuth_from_three_energy(front, back, left, right)
+                    combined[chosen]["degree"] = degree
+                    final.append([combined[chosen]])
+            else:
+                combined[i]["degree"] = float(idx_to_degree[i])
+                final.append(combined[i])
+    
+    return final
+
+
 def combine_quadro_azimuth(fl_events, fr_events, rl_events, rr_events, fl_channel, fr_channel, rl_channel, rr_channel):
-    """
-    Returns surround azimuthranged 0–360.
-    uses vertical, horizontal energy as pseudocoords
-    """
+
 
     combined = fl_events + fr_events + rl_events + rr_events
 
