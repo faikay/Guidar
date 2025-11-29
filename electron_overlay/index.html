@@ -71,6 +71,12 @@
         const topBar = document.getElementById('top-bar');
         const degreeRing = document.getElementById('degree-ring');
 
+        // Event types to ignore (won't display on overlay)
+        const IGNORED_EVENTS = [
+            'silence',
+            'general noise'
+        ];
+
         // Unique colors per event type (non-silence)
         const EVENT_COLORS = {
             gun:          'rgba(255, 80, 80, 1.0)',    // Bright Red
@@ -130,7 +136,7 @@
                         item.degree !== undefined &&
                         item.degree !== null &&
                         eventName &&
-                        eventName !== 'silence'
+                        !IGNORED_EVENTS.includes(eventName)
                     ) {
                         const deg = parseFloat(item.degree);
                         if (!isNaN(deg)) {

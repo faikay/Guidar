@@ -4,7 +4,8 @@ import websockets
 import json
 import os
 from backend_logic.audio_capture import get_audio_stream_pyaudiowpatch
-from backend_logic.model_inference import predict_events
+#from backend_logic.model_inference import predict_events
+from PretrainedSED.SED_inference_custom import predict_events_SED as predict_events
 import traceback
 
 # A set of currently connected clients (websocket objects)
