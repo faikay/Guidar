@@ -74,7 +74,8 @@
         // Event types to ignore (won't display on overlay)
         const IGNORED_EVENTS = [
             'silence',
-            'general noise'
+            'general noise',
+            'vehicle'
         ];
 
         // Unique colors per event type (non-silence)
@@ -164,24 +165,17 @@
                             // Add drop shadow to make it pop against any background
                             iconContainer.style.filter = 'drop-shadow(0 0 2px rgba(0,0,0,1)) drop-shadow(0 0 5px rgba(0,0,0,0.5))';
                             
-                            // Position logic:
-                            // We want the icon at 'deg' degrees along the ring.
-                            // Radius of ring is 110px (width 220px / 2).
-                            // Let's place it slightly inside or on the ring.
+
                             const radius = 95; // slightly inside
-                            const rad = (deg - 90) * (Math.PI / 180); // -90 because 0 is usually 3 o'clock in trig, but 12 o'clock in CSS rotation? 
-                            // Actually, let's assume 0 deg is North (12 o'clock).
-                            // Trig 0 is East (3 o'clock).
-                            // So to map North(0) to Trig(270/-90), we subtract 90.
+                            const rad = (deg - 90) * (Math.PI / 180); 
+
                             
                             const x = radius * Math.cos(rad) + 110 - 14; // 110 is center, -14 is half icon width (28/2)
                             const y = radius * Math.sin(rad) + 110 - 14;
 
                             iconContainer.style.left = `${x}px`;
                             iconContainer.style.top = `${y}px`;
-                            // Rotate icon to match orientation? Or keep upright?
-                            // Let's keep upright for readability, maybe rotate if user wants.
-                            // For now, upright.
+
                             
                             iconContainer.innerHTML = ICONS[eventName] || DEFAULT_ICON;
                             degreeRing.appendChild(iconContainer);

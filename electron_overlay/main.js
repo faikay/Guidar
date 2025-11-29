@@ -7,7 +7,7 @@ function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 400,
         height: 400,
-        x: width - 450, // Position bottom right by default, or change as needed
+        x: width - 450, // Position bottom right by defau
         y: height - 450,
         webPreferences: {
             nodeIntegration: true,
@@ -26,14 +26,6 @@ function createWindow() {
     mainWindow.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
 
     mainWindow.loadFile('index.html');
-    
-    // Optional: Open the DevTools.
-    // mainWindow.webContents.openDevTools({ mode: 'detach' });
-
-    // Make the window click-through (ignore mouse events)
-    // If you want to be able to drag it, you need to handle that in the renderer
-    // and toggle this. For a pure overlay, we often want click-through.
-    // mainWindow.setIgnoreMouseEvents(true, { forward: true });
 }
 
 app.whenReady().then(() => {
