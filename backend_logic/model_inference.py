@@ -125,8 +125,8 @@ def process_predict_quadro(audio_tensor, sample_rate, skip_model=False):
 def process_predict_7one(audio_tensor, sample_rate, skip_model=False):
     """
     Process 7.1 (8-channel) audio and return combined events.
-    
-    7.1 expected WASAPI/FFmpeg order:
+    Asssumption
+    Order of channels (standard 7.1): 
         0: FL
         1: FR
         2: FC
@@ -142,8 +142,6 @@ def process_predict_7one(audio_tensor, sample_rate, skip_model=False):
     # Extract channel tensors
     fl_channel = audio_tensor[:, 0]   # Front Left
     fr_channel = audio_tensor[:, 1]   # Front Right
-    # FC = audio_tensor[:, 2]         # Ignored
-    # LFE = audio_tensor[:, 3]        # Ignored
     bl_channel = audio_tensor[:, 4]   # Back Left
     br_channel = audio_tensor[:, 5]   # Back Right
     sl_channel = audio_tensor[:, 6]   # Side Left

@@ -365,6 +365,11 @@ def combine_quadro_weighted(fl_events, fr_events, rl_events, rr_events, fl_chann
                     real_degree = (idx_to_degree[main_idx] + rel_degree)  
                     curr_degree += real_degree * energies[idx]
             curr_degree = curr_degree % 360.0
+            
+            # Check for NaN
+            if np.isnan(curr_degree):
+                curr_degree = float(idx_to_degree[main_idx])  # fallback to main speaker degree
+            
             combined[main_idx]["degree"] = float(curr_degree)
             final.append([combined[main_idx]])
             #print("summary of combination:")

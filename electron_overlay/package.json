@@ -4,6 +4,7 @@
   "description": "Electron overlay for Audio Event Detection",
   "main": "main.js",
   "scripts": {
+    "prestart": "cd .. && start \"pybg\"  conda run -n audioenv python main.py && timeout /T 15 /NOBREAK >nul",
     "start": "electron ."
   },
   "keywords": [],
