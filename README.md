@@ -74,6 +74,7 @@ The overlay's directional accuracy depends on how many audio channels your syste
 1. Install [Virtual Audio Cable](https://vac.muzychenko.net/en/download.htm)
 2. Open the VAC control panel by runnin it as admin, and configure it with these settings:
 <img width="1318" height="315" alt="image" src="https://github.com/user-attachments/assets/a8069aa7-91f8-4f26-bb2f-1352d3e5c605" />
+
 4. Click "Set" followed by "Reset"
 5. Click on "Audio Properties"
 6. Click on the VAC output device and select "Configure"
